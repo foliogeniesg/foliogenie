@@ -1,3 +1,37 @@
+// Send email function for contact form
+function sendEmail() {
+    
+    // Get form data
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const company = document.getElementById('company').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+    
+    // Create email body
+    const emailBody = `New Contact Form Submission
+
+Name: ${firstName} ${lastName}
+Email: ${email}
+Phone: ${phone}
+Company: ${company}
+Inquiry Type: ${subject}
+
+Message:
+${message}
+
+---
+This message was sent from the FolioGenie website contact form.`;
+    
+    // Create mailto link
+    const mailtoLink = `mailto:info@foliogenie.com?subject=Contact Form: ${subject}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
+}
+
 // Form Validation and Interactive Features
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -20,7 +54,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact Form Validation
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        validateContactForm();
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            sendEmail();
+        });
     }
     
     // Register Form Validation
@@ -92,92 +129,7 @@ function validateLoginForm() {
     return isValid;
 }
 
-// Contact Form Validation
-function validateContactForm() {
-    const form = document.getElementById('contactForm');
-    if (!form) return;
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Clear previous error messages
-        clearErrorMessages();
-        
-        let isValid = true;
-        
-        // Validate first name
-        const firstName = document.getElementById('firstName');
-        if (!firstName.value.trim()) {
-            showFieldError('firstNameError', 'First name is required');
-            isValid = false;
-        }
-        
-        // Validate last name
-        const lastName = document.getElementById('lastName');
-        if (!lastName.value.trim()) {
-            showFieldError('lastNameError', 'Last name is required');
-            isValid = false;
-        }
-        
-        // Validate email
-        const email = document.getElementById('email');
-        if (!email.value.trim()) {
-            showFieldError('emailError', 'Email is required');
-            isValid = false;
-        } else if (!isValidEmail(email.value)) {
-            showFieldError('emailError', 'Please enter a valid email address');
-            isValid = false;
-        }
-        
-        // Validate phone
-        const phone = document.getElementById('phone');
-        if (!phone.value.trim()) {
-            showFieldError('phoneError', 'Phone number is required');
-            isValid = false;
-        } else if (!isValidPhone(phone.value)) {
-            showFieldError('phoneError', 'Please enter a valid phone number');
-            isValid = false;
-        }
-        
-        // Validate company
-        const company = document.getElementById('company');
-        if (!company.value.trim()) {
-            showFieldError('companyError', 'Company name is required');
-            isValid = false;
-        }
-        
-        // Validate subject
-        const subject = document.getElementById('subject');
-        if (!subject.value) {
-            showFieldError('subjectError', 'Please select an inquiry type');
-            isValid = false;
-        }
-        
-        // Validate message
-        const message = document.getElementById('message');
-        if (!message.value.trim()) {
-            showFieldError('messageError', 'Message is required');
-            isValid = false;
-        } else if (message.value.trim().length < 10) {
-            showFieldError('messageError', 'Message must be at least 10 characters long');
-            isValid = false;
-        }
-        
-        if (isValid) {
-            // Add loading state
-            const submitBtn = form.querySelector('button[type="submit"]');
-            addLoadingState(submitBtn, 'Sending...');
-            
-            // Simulate form submission
-            setTimeout(() => {
-                alert('Thank you for your message! We will get back to you within 24 hours.');
-                form.reset();
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
-                submitBtn.disabled = false;
-            }, 2000);
-        }
-    });
-}
 
 // Register Form Validation
 function validateRegisterForm() {
@@ -336,3 +288,83 @@ function animateOnScroll() {
 
 // Initialize animations when page loads
 window.addEventListener('load', animateOnScroll); 
+
+// Handle 404 errors and redirect to home page (GitHub Pages compatible)
+function handle404Redirect() {
+    // Check if current page exists
+    if (document.title === '404 Not Found' || 
+        window.location.pathname.includes('404') ||
+        document.body.innerHTML.includes('404')) {
+        
+        // For GitHub Pages, use relative path
+        const currentPath = window.location.pathname;
+        
+        // Smart URL handling for common patterns
+        if (currentPath.endsWith('/') && currentPath !== '/') {
+            // Remove trailing slash and try to redirect
+            const cleanPath = currentPath.slice(0, -1);
+            const targetUrl = window.location.origin + cleanPath;
+            
+            // Try to fetch the target page
+            fetch(targetUrl, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = targetUrl;
+                    } else {
+                        // Try with .html extension
+                        const htmlUrl = targetUrl + '.html';
+                        return fetch(htmlUrl, { method: 'HEAD' });
+                    }
+                })
+                .then(response => {
+                    if (response && response.ok) {
+                        window.location.href = response.url;
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                })
+                .catch(() => {
+                    window.location.href = 'index.html';
+                });
+        } else if (!currentPath.includes('.') && currentPath !== '/' && currentPath !== '/index.html') {
+            // Try adding .html extension
+            const htmlUrl = currentPath + '.html';
+            fetch(htmlUrl, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = htmlUrl;
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                })
+                .catch(() => {
+                    window.location.href = 'index.html';
+                });
+        } else {
+            // Default redirect to home
+            window.location.href = 'index.html';
+        }
+    }
+}
+
+// Run on page load
+document.addEventListener('DOMContentLoaded', handle404Redirect);
+
+// Also check on window load
+window.addEventListener('load', handle404Redirect);
+
+// Handle navigation errors
+window.addEventListener('error', function(e) {
+    if (e.message.includes('404') || e.message.includes('not found')) {
+        window.location.href = 'index.html';
+    }
+});
+
+// GitHub Pages specific: Handle hash-based routing issues
+window.addEventListener('hashchange', function() {
+    const hash = window.location.hash;
+    if (hash && !document.querySelector(hash)) {
+        // Invalid hash, redirect to home
+        window.location.href = 'index.html';
+    }
+}); 
