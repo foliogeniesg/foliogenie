@@ -301,45 +301,30 @@ function handle404Redirect() {
         
         // Smart URL handling for common patterns
         if (currentPath.endsWith('/') && currentPath !== '/') {
-            // Remove trailing slash and try to redirect
+            // Remove trailing slash and handle appropriately
             const cleanPath = currentPath.slice(0, -1);
-            const targetUrl = window.location.origin + cleanPath;
             
-            // Try to fetch the target page
-            fetch(targetUrl, { method: 'HEAD' })
-                .then(response => {
-                    if (response.ok) {
-                        window.location.href = targetUrl;
-                    } else {
-                        // Try with .html extension
-                        const htmlUrl = targetUrl + '.html';
-                        return fetch(htmlUrl, { method: 'HEAD' });
-                    }
-                })
-                .then(response => {
-                    if (response && response.ok) {
-                        window.location.href = response.url;
-                    } else {
-                        window.location.href = 'index.html';
-                    }
-                })
-                .catch(() => {
-                    window.location.href = 'index.html';
-                });
+            // Special handling for known non-existent URLs
+            const nonExistentUrls = ['/login1', '/login', '/sign-up', '/custody'];
+            if (nonExistentUrls.includes(cleanPath)) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // For valid pages, redirect to .html version
+            const validPages = ['/about', '/services', '/contact', '/register'];
+            if (validPages.includes(cleanPath)) {
+                const htmlUrl = window.location.origin + cleanPath + '.html';
+                window.location.href = htmlUrl;
+                return;
+            }
+            
+            // For any other trailing slash URL, redirect to home
+            window.location.href = 'index.html';
         } else if (!currentPath.includes('.') && currentPath !== '/' && currentPath !== '/index.html') {
-            // Try adding .html extension
+            // Add .html extension
             const htmlUrl = currentPath + '.html';
-            fetch(htmlUrl, { method: 'HEAD' })
-                .then(response => {
-                    if (response.ok) {
-                        window.location.href = htmlUrl;
-                    } else {
-                        window.location.href = 'index.html';
-                    }
-                })
-                .catch(() => {
-                    window.location.href = 'index.html';
-                });
+            window.location.href = htmlUrl;
         } else {
             // Default redirect to home
             window.location.href = 'index.html';
