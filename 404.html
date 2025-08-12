@@ -66,77 +66,62 @@
     </div>
 
     <script>
-        // Smart URL handling and redirect logic
+        // Smart URL handling and redirect logic for GitHub Pages
         function handleSmartRedirect() {
             const currentPath = window.location.pathname;
             const currentUrl = window.location.href;
             
-            // Remove trailing slash and try to redirect to the correct page
-            if (currentPath.endsWith('/') && currentPath !== '/') {
-                const cleanPath = currentPath.slice(0, -1);
-                const targetUrl = window.location.origin + cleanPath;
-                
-                // Try to fetch the target page to see if it exists
-                fetch(targetUrl, { method: 'HEAD' })
-                    .then(response => {
-                        if (response.ok) {
-                            // Page exists without trailing slash, redirect there
-                            window.location.href = targetUrl;
-                            return;
-                        }
-                        // Try with .html extension
-                        const htmlUrl = targetUrl + '.html';
-                        return fetch(htmlUrl, { method: 'HEAD' });
-                    })
-                    .then(response => {
-                        if (response && response.ok) {
-                            // Page exists with .html extension, redirect there
-                            window.location.href = response.url;
-                            return;
-                        }
-                        // If all else fails, redirect to home
-                        window.location.href = 'index.html';
-                    })
-                    .catch(() => {
-                        // On error, redirect to home
-                        window.location.href = 'index.html';
-                    });
-            } else {
-                // Try adding .html extension if current path doesn't have it
-                if (!currentPath.includes('.') && currentPath !== '/') {
-                    const htmlUrl = currentUrl + '.html';
-                    fetch(htmlUrl, { method: 'HEAD' })
-                        .then(response => {
-                            if (response.ok) {
-                                window.location.href = htmlUrl;
-                            } else {
-                                // Try home page
-                                window.location.href = 'index.html';
-                            }
-                        })
-                        .catch(() => {
-                            window.location.href = 'index.html';
-                        });
-                } else {
-                    // Default: redirect to home
-                    window.location.href = 'index.html';
-                }
+            console.log('Current path:', currentPath);
+            console.log('Current URL:', currentUrl);
+            
+                    // Handle trailing slash redirects (e.g., /about/ -> /about.html)
+        if (currentPath.endsWith('/') && currentPath !== '/') {
+            const cleanPath = currentPath.slice(0, -1);
+            
+            // Special handling for known non-existent URLs
+            if (cleanPath === '/login1' || cleanPath === '/login') {
+                console.log('Redirecting login1/login to home page');
+                window.location.href = 'index.html';
+                return;
             }
+            
+            const htmlUrl = window.location.origin + cleanPath + '.html';
+            
+            console.log('Trying to redirect to:', htmlUrl);
+            
+            // For GitHub Pages, we know the structure, so redirect directly
+            window.location.href = htmlUrl;
+            return;
+        }
+            
+            // Handle paths without .html extension (e.g., /about -> /about.html)
+            if (!currentPath.includes('.') && currentPath !== '/' && currentPath !== '/index.html') {
+                const htmlUrl = currentUrl + '.html';
+                console.log('Adding .html extension:', htmlUrl);
+                window.location.href = htmlUrl;
+                return;
+            }
+            
+            // If we get here, redirect to home
+            console.log('Redirecting to home page');
+            window.location.href = 'index.html';
         }
 
         // Run smart redirect immediately
         handleSmartRedirect();
         
-        // Fallback: Automatic redirect to home after 5 seconds if smart redirect fails
+        // Fallback: Automatic redirect to home after 3 seconds if smart redirect fails
         setTimeout(function() {
             if (window.location.pathname !== '/index.html' && window.location.pathname !== '/') {
+                console.log('Fallback redirect to home');
                 window.location.href = 'index.html';
             }
-        }, 5000);
+        }, 3000);
         
         // Also redirect on any click as backup
         document.addEventListener('click', function() {
             if (window.location.pathname !== '/index.html' && window.location.pathname !== '/') {
+                console.log('Click redirect to home');
                 window.location.href = 'index.html';
             }
         });
