@@ -7,19 +7,19 @@
         // IMMEDIATE redirect - no delays, no complex logic
         var path = window.location.pathname;
         
-        // Direct mapping with trailing slash - no path modification
+        // Direct mapping with trailing slash - use full URLs
         if (path === '/sign-up/' || path === '/signup/' || path === '/register/') {
-            window.location.replace('register.html');
+            window.location.replace('https://www.foliogenie.com/register.html');
         } else if (path === '/about/') {
-            window.location.replace('about.html');
+            window.location.replace('https://www.foliogenie.com/about.html');
         } else if (path === '/services/') {
-            window.location.replace('services.html');
+            window.location.replace('https://www.foliogenie.com/services.html');
         } else if (path === '/contact/') {
-            window.location.replace('contact.html');
+            window.location.replace('https://www.foliogenie.com/contact.html');
         } else if (path === '/login1/' || path === '/login/' || path === '/custody/' || path === '/dashboard/' || path === '/admin/' || path === '/portal/') {
-            window.location.replace('index.html');
+            window.location.replace('https://www.foliogenie.com/index.html');
         } else {
-            window.location.replace('index.html');
+            window.location.replace('https://www.foliogenie.com/index.html');
         }
     </script>
 </head>
