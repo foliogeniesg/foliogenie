@@ -289,66 +289,63 @@ function animateOnScroll() {
 // Initialize animations when page loads
 window.addEventListener('load', animateOnScroll); 
 
-// Handle 404 errors and redirect to home page (GitHub Pages compatible)
-function handle404Redirect() {
-    // Check if current page exists
-    if (document.title === '404 Not Found' || 
-        window.location.pathname.includes('404') ||
-        document.body.innerHTML.includes('404')) {
+// Smart URL routing and redirect logic
+function handleSmartRouting() {
+    const currentPath = window.location.pathname;
+    
+    // Handle trailing slash redirects and smart routing
+    if (currentPath.endsWith('/') && currentPath !== '/') {
+        const cleanPath = currentPath.slice(0, -1);
         
-        // For GitHub Pages, use relative path
-        const currentPath = window.location.pathname;
+        // Smart routing for specific URLs
+        const smartRoutes = {
+            '/login1': 'index.html',           // login1 -> homepage
+            '/login': 'index.html',             // login -> homepage  
+            '/sign-up': 'register.html',        // sign-up -> register page
+            '/signup': 'register.html',         // signup -> register page
+            '/register': 'register.html',       // register -> register page
+            '/custody': 'index.html',           // custody -> homepage
+            '/dashboard': 'index.html',         // dashboard -> homepage
+            '/admin': 'index.html',             // admin -> homepage
+            '/portal': 'index.html'             // portal -> homepage
+        };
         
-        // Smart URL handling for common patterns
-        if (currentPath.endsWith('/') && currentPath !== '/') {
-            // Remove trailing slash and handle appropriately
-            const cleanPath = currentPath.slice(0, -1);
-            
-            // Smart routing for specific URLs
-            const smartRoutes = {
-                '/login1': 'index.html',           // login1 -> homepage
-                '/login': 'index.html',             // login -> homepage  
-                '/sign-up': 'register.html',        // sign-up -> register page
-                '/signup': 'register.html',         // signup -> register page
-                '/register': 'register.html',       // register -> register page
-                '/custody': 'index.html',           // custody -> homepage
-                '/dashboard': 'index.html',         // dashboard -> homepage
-                '/admin': 'index.html',             // admin -> homepage
-                '/portal': 'index.html'             // portal -> homepage
-            };
-            
-            if (smartRoutes[cleanPath]) {
-                const targetPage = smartRoutes[cleanPath];
-                window.location.href = targetPage;
-                return;
-            }
-            
-            // For valid pages, redirect to .html version
-            const validPages = ['/about', '/services', '/contact'];
-            if (validPages.includes(cleanPath)) {
-                const htmlUrl = window.location.origin + cleanPath + '.html';
-                window.location.href = htmlUrl;
-                return;
-            }
-            
-            // For any other trailing slash URL, redirect to home
-            window.location.href = 'index.html';
-        } else if (!currentPath.includes('.') && currentPath !== '/' && currentPath !== '/index.html') {
-            // Add .html extension
-            const htmlUrl = currentPath + '.html';
-            window.location.href = htmlUrl;
-        } else {
-            // Default redirect to home
-            window.location.href = 'index.html';
+        if (smartRoutes[cleanPath]) {
+            const targetPage = smartRoutes[cleanPath];
+            console.log('Smart routing:', cleanPath, '->', targetPage);
+            window.location.href = targetPage;
+            return;
         }
+        
+        // For valid pages, redirect to .html version
+        const validPages = ['/about', '/services', '/contact'];
+        if (validPages.includes(cleanPath)) {
+            const htmlUrl = window.location.origin + cleanPath + '.html';
+            console.log('Redirecting to valid page:', htmlUrl);
+            window.location.href = htmlUrl;
+            return;
+        }
+        
+        // For any other trailing slash URL, redirect to home
+        console.log('Unknown trailing slash URL, redirecting to home:', cleanPath);
+        window.location.href = 'index.html';
+        return;
+    }
+    
+    // Handle paths without .html extension
+    if (!currentPath.includes('.') && currentPath !== '/' && currentPath !== '/index.html') {
+        const htmlUrl = currentPath + '.html';
+        console.log('Adding .html extension:', htmlUrl);
+        window.location.href = htmlUrl;
+        return;
     }
 }
 
-// Run on page load
-document.addEventListener('DOMContentLoaded', handle404Redirect);
+// Run smart routing on page load
+document.addEventListener('DOMContentLoaded', handleSmartRouting);
 
 // Also check on window load
-window.addEventListener('load', handle404Redirect);
+window.addEventListener('load', handleSmartRouting);
 
 // Handle navigation errors
 window.addEventListener('error', function(e) {
