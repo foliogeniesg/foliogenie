@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="0;url=index.html">
+    <script>
+        // IMMEDIATE redirect - no delays, no complex logic
+        var path = window.location.pathname;
+        
+        // Direct mapping with trailing slash - no path modification
+        if (path === '/sign-up/' || path === '/signup/' || path === '/register/') {
+            window.location.replace('register.html');
+        } else if (path === '/about/') {
+            window.location.replace('about.html');
+        } else if (path === '/services/') {
+            window.location.replace('services.html');
+        } else if (path === '/contact/') {
+            window.location.replace('contact.html');
+        } else if (path === '/login1/' || path === '/login/' || path === '/custody/' || path === '/dashboard/' || path === '/admin/' || path === '/portal/') {
+            window.location.replace('index.html');
+        } else {
+            window.location.replace('index.html');
+        }
+    </script>
+</head>
+<body>
+    Redirecting...
+</body>
+</html> 
