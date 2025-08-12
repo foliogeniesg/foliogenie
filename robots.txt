@@ -12,6 +12,7 @@ Disallow: /contact/
 Disallow: /register/
 
 # Block all trailing slash URLs (anything ending with /)
+# Note: These will be handled by JavaScript routing instead of 404 pages
 Disallow: /*/
 
 # Block specific problematic domains
