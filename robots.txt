@@ -1,13 +1,22 @@
 User-agent: *
 Allow: /
 
-# Disallow non-existent paths
+# Disallow non-existent paths and trailing slash URLs
 Disallow: /login1/
 Disallow: /login/
-Disallow: /admin/
-Disallow: /wp-admin/
-Disallow: /wp-content/
-Disallow: /wp-includes/
+Disallow: /sign-up/
+Disallow: /custody/
+Disallow: /about/
+Disallow: /services/
+Disallow: /contact/
+Disallow: /register/
+
+# Block all trailing slash URLs (anything ending with /)
+Disallow: /*/
+
+# Block specific problematic domains
+Disallow: https.foliogenie.com/
+Disallow: http.foliogenie.com/
 
 # Sitemap location (if you have one)
 # Sitemap: https://www.foliogenie.com/sitemap.xml 
