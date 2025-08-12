@@ -78,16 +78,28 @@
         if (currentPath.endsWith('/') && currentPath !== '/') {
             const cleanPath = currentPath.slice(0, -1);
             
-            // Special handling for known non-existent URLs that should go to home
-            const nonExistentUrls = ['/login1', '/login', '/sign-up', '/custody'];
-            if (nonExistentUrls.includes(cleanPath)) {
-                console.log('Redirecting non-existent URL to home page:', cleanPath);
-                window.location.href = 'index.html';
+            // Smart routing for specific URLs
+            const smartRoutes = {
+                '/login1': 'index.html',           // login1 -> homepage
+                '/login': 'index.html',             // login -> homepage  
+                '/sign-up': 'register.html',        // sign-up -> register page
+                '/signup': 'register.html',         // signup -> register page
+                '/register': 'register.html',       // register -> register page
+                '/custody': 'index.html',           // custody -> homepage
+                '/dashboard': 'index.html',         // dashboard -> homepage
+                '/admin': 'index.html',             // admin -> homepage
+                '/portal': 'index.html'             // portal -> homepage
+            };
+            
+            if (smartRoutes[cleanPath]) {
+                const targetPage = smartRoutes[cleanPath];
+                console.log('Smart routing:', cleanPath, '->', targetPage);
+                window.location.href = targetPage;
                 return;
             }
             
             // For valid pages, redirect to .html version
-            const validPages = ['/about', '/services', '/contact', '/register'];
+            const validPages = ['/about', '/services', '/contact'];
             if (validPages.includes(cleanPath)) {
                 const htmlUrl = window.location.origin + cleanPath + '.html';
                 console.log('Redirecting to valid page:', htmlUrl);
