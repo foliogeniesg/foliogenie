@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Disallow non-existent paths
+Disallow: /login1/
+Disallow: /login/
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+
+# Sitemap location (if you have one)
+# Sitemap: https://www.foliogenie.com/sitemap.xml 
