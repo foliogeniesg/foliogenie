@@ -74,23 +74,30 @@
             console.log('Current path:', currentPath);
             console.log('Current URL:', currentUrl);
             
-                    // Handle trailing slash redirects (e.g., /about/ -> /about.html)
+                    // Handle ALL trailing slash redirects (e.g., /about/ -> /about.html)
         if (currentPath.endsWith('/') && currentPath !== '/') {
             const cleanPath = currentPath.slice(0, -1);
             
-            // Special handling for known non-existent URLs
-            if (cleanPath === '/login1' || cleanPath === '/login') {
-                console.log('Redirecting login1/login to home page');
+            // Special handling for known non-existent URLs that should go to home
+            const nonExistentUrls = ['/login1', '/login', '/sign-up', '/custody'];
+            if (nonExistentUrls.includes(cleanPath)) {
+                console.log('Redirecting non-existent URL to home page:', cleanPath);
                 window.location.href = 'index.html';
                 return;
             }
             
-            const htmlUrl = window.location.origin + cleanPath + '.html';
+            // For valid pages, redirect to .html version
+            const validPages = ['/about', '/services', '/contact', '/register'];
+            if (validPages.includes(cleanPath)) {
+                const htmlUrl = window.location.origin + cleanPath + '.html';
+                console.log('Redirecting to valid page:', htmlUrl);
+                window.location.href = htmlUrl;
+                return;
+            }
             
-            console.log('Trying to redirect to:', htmlUrl);
-            
-            // For GitHub Pages, we know the structure, so redirect directly
-            window.location.href = htmlUrl;
+            // For any other trailing slash URL, redirect to home
+            console.log('Unknown trailing slash URL, redirecting to home:', cleanPath);
+            window.location.href = 'index.html';
             return;
         }
             
