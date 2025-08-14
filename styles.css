@@ -3220,4 +3220,8 @@ body {
     .hero-section .hero-content {
         padding-top: 4rem !important;
     }
+    
+    .get-connected-btn {
+        margin-bottom: 1rem !important;
+    }
 } 
