@@ -3213,4 +3213,11 @@ body {
     .about-vision-text {
         text-align: left !important;
     }
+}
+
+/* Mobile view: increase space between header and hero text on homepage */
+@media (max-width: 767.98px) {
+    .hero-section .hero-content {
+        padding-top: 4rem !important;
+    }
 } 
