@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - FolioGenie</title>
+    <title>Solutions - foliogenie</title>
     <link rel="icon" type="image/png" href="square genie.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="services-page">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="logo 2 blue.png" alt="FolioGenie Logo" class="logo-img">
+                <img src="white blue logo.png" alt="FolioGenie Logo" class="logo-img">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -23,185 +23,291 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link active" href="services.html">solutions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="about.html">about</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="services.html">Services</a>
+                        <a class="nav-link" href="contact.html">contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link register-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfrP9-hRvx2BsIGFAUHvPBACoJXz76b5dq49dJS9kAyQ-y2Yw/viewform?usp=header" target="_blank">Register</a>
-                    </li>
+
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Services Banner -->
-    <section class="services-banner">
+    <!-- Solutions Hero Banner -->
+    <section class="solutions-hero">
         <div class="hero-overlay">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
-                        <h1 class="services-title">SERVICES</h1>
-                        <p class="services-subtitle">Comprehensive financial solutions designed for modern advisors</p>
+                        <h1 class="hero-title">solutions</h1>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Content -->
-    <section class="services-section">
+
+
+    <!-- Solutions Section -->
+    <section class="solutions-section">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 text-center">
-                    <h2 class="ecosystem-title">Service Ecosystem at Your Fingertips</h2>
-                    <p class="ecosystem-subtitle">Streamline your operations with our integrated platform that connects all aspects of your financial advisory business.</p>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-users"></i>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="solution-card featured">
+                        <div class="solution-header">
+                            <div class="solution-icon-large">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h2 class="solution-title-large">folio guru</h2>
                         </div>
-                        <h3>Customer Relationship Management</h3>
-                        <p>Comprehensive CRM tools for managing client relationships, communication tracking, and engagement analytics. Streamline client interactions with automated workflows and personalized touchpoints.</p>
-                        <div class="service-features">
-                            <span class="feature-tag">Client Portal</span>
-                            <span class="feature-tag">Communication Hub</span>
-                            <span class="feature-tag">Analytics</span>
+                        <div class="solution-features-large">
+                            <span class="feature-tag-large">AI-Powered</span>
+                            <span class="feature-tag-large">Advisory</span>
+                            <span class="feature-tag-large">Guidance</span>
                         </div>
+                        <button class="learn-more-btn" data-solution="folio-guru">Explore</button>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-university"></i>
+                <div class="col-lg-4">
+                    <div class="solution-card featured">
+                        <div class="solution-header">
+                            <div class="solution-icon-large">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <h2 class="solution-title-large">folio connect</h2>
                         </div>
-                        <h3>Banking Services Integration</h3>
-                        <p>Seamless integration with major banking institutions for account management, transaction processing, and real-time financial data. Connect multiple accounts in one unified dashboard.</p>
-                        <div class="service-features">
-                            <span class="feature-tag">Multi-Bank Access</span>
-                            <span class="feature-tag">Real-time Data</span>
-                            <span class="feature-tag">Transaction History</span>
+                        <div class="solution-features-large">
+                            <span class="feature-tag-large">API Suite</span>
+                            <span class="feature-tag-large">Integration</span>
+                            <span class="feature-tag-large">Connectivity</span>
                         </div>
+                        <button class="learn-more-btn" data-solution="folio-connect">Explore</button>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-shield-alt"></i>
+                <div class="col-lg-4">
+                    <div class="solution-card featured">
+                        <div class="solution-header">
+                            <div class="solution-icon-large">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h2 class="solution-title-large">folio viewer</h2>
                         </div>
-                        <h3>Custodial Services</h3>
-                        <p>Secure and reliable custodial services for asset management with comprehensive reporting and compliance tools. Ensure safe custody of client assets with industry-leading security protocols.</p>
-                        <div class="service-features">
-                            <span class="feature-tag">Asset Protection</span>
-                            <span class="feature-tag">Compliance Tools</span>
-                            <span class="feature-tag">Secure Storage</span>
+                        <div class="solution-features-large">
+                            <span class="feature-tag-large">Portfolio View</span>
+                            <span class="feature-tag-large">Analytics</span>
+                            <span class="feature-tag-large">Tax Planning</span>
                         </div>
+                        <button class="learn-more-btn" data-solution="folio-viewer">Explore</button>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-chart-line"></i>
+                <div class="col-lg-4">
+                    <div class="solution-card featured">
+                        <div class="solution-header">
+                            <div class="solution-icon-large">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h2 class="solution-title-large">folio advisor</h2>
                         </div>
-                        <h3>Advanced Reporting & Analytics</h3>
-                        <p>Comprehensive reporting and analytics tools to provide insights into portfolio performance, client metrics, and business growth. Generate detailed reports for clients and regulatory compliance.</p>
-                        <div class="service-features">
-                            <span class="feature-tag">Performance Tracking</span>
-                            <span class="feature-tag">Custom Reports</span>
-                            <span class="feature-tag">Regulatory Compliance</span>
+                        <div class="solution-features-large">
+                            <span class="feature-tag-large">Collaboration</span>
+                            <span class="feature-tag-large">Engagement</span>
+                            <span class="feature-tag-large">Administration</span>
                         </div>
+                        <button class="learn-more-btn" data-solution="folio-advisor">Explore</button>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-calculator"></i>
+                <div class="col-lg-4">
+                    <div class="solution-card featured">
+                        <div class="solution-header">
+                            <div class="solution-icon-large">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h2 class="solution-title-large">folio enterprise</h2>
                         </div>
-                        <h3>Fund Administration</h3>
-                        <p>Complete fund administration services including accounting, compliance monitoring, and investor services. Streamline fund operations with automated processes and expert support.</p>
-                        <div class="service-features">
-                            <span class="feature-tag">Fund Accounting</span>
-                            <span class="feature-tag">Compliance Monitoring</span>
-                            <span class="feature-tag">Investor Services</span>
+                        <div class="solution-features-large">
+                            <span class="feature-tag-large">Customizable</span>
+                            <span class="feature-tag-large">Scalable</span>
+                            <span class="feature-tag-large">Enterprise</span>
                         </div>
+                        <button class="learn-more-btn" data-solution="folio-enterprise">Explore</button>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-search-dollar"></i>
+                <div class="col-lg-4">
+                    <div class="solution-card featured">
+                        <div class="solution-header">
+                            <div class="solution-icon-large">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h2 class="solution-title-large">folio trader</h2>
                         </div>
-                        <h3>Market Research & Analysis</h3>
-                        <p>Access to comprehensive market research, investment analysis, and economic insights. Stay informed with real-time data, expert commentary, and actionable investment recommendations.</p>
-                        <div class="service-features">
-                            <span class="feature-tag">Market Data</span>
-                            <span class="feature-tag">Investment Research</span>
-                            <span class="feature-tag">Expert Insights</span>
+                        <div class="solution-features-large">
+                            <span class="feature-tag-large">Real-time Trading</span>
+                            <span class="feature-tag-large">Market Data</span>
+                            <span class="feature-tag-large">Securities</span>
                         </div>
+                        <button class="learn-more-btn" data-solution="folio-trader">Explore</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Integration Section -->
-    <section class="integration-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h2 class="integration-title">Seamless Integration</h2>
-                    <p class="integration-text">Our platform integrates with your existing tools and workflows, ensuring a smooth transition and enhanced productivity without disrupting your current operations.</p>
-                    <div class="integration-features">
-                        <div class="integration-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>API-first architecture for easy connectivity</span>
-                        </div>
-                        <div class="integration-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Real-time data synchronization</span>
-                        </div>
-                        <div class="integration-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Customizable workflows and automation</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="integration-image">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Platform Integration" class="img-fluid rounded">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="text-center">
-                <p>&copy; 2024 FolioGenie. All rights reserved.</p>
-
+                <p>&copy; 2023 foliogenie. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    
+    <!-- Solution Modals -->
+    <!-- Folio Guru Modal -->
+    <div class="modal fade" id="folio-guru-modal" tabindex="-1" aria-labelledby="folio-guru-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="folio-guru-modal-label">folio guru</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                                            <p class="modal-description">Our AI-powered advisory tool is like having a trusted guide by your side. It spots the most relevant wealth management products for your clients, tailored to their unique needs. Whether they prefer to explore on their own or work with a trusted advisor, we make the journey simple, intuitive, and confidence-inspiring so they can reach their financial goals without the guesswork.</p>
+                    <div class="modal-features">
+                        <span class="feature-tag-large">AI-Powered</span>
+                        <span class="feature-tag-large">Advisory</span>
+                        <span class="feature-tag-large">Guidance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Folio Connect Modal -->
+    <div class="modal fade" id="folio-connect-modal" tabindex="-1" aria-labelledby="folio-connect-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="folio-connect-modal-label">folio connect</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                                            <p class="modal-description">Our comprehensive suite of APIs brings together all your service providers including brokers, accountants, and custodians along with subscriptions like Morningstar and Bloomberg under one unified platform. This integration streamlines operations, reduces complexity, and frees you to focus on what matters most: delivering exceptional client service.</p>
+                    <div class="modal-features">
+                        <span class="feature-tag-large">API Suite</span>
+                        <span class="feature-tag-large">Integration</span>
+                        <span class="feature-tag-large">Connectivity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Folio Viewer Modal -->
+    <div class="modal fade" id="folio-viewer-modal" tabindex="-1" aria-labelledby="folio-viewer-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="folio-viewer-modal-label">folio viewer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <p class="modal-description">Our folio viewer lets both your clients and advisors explore portfolios in multiple ways, making it easier to have meaningful conversations and make smarter investment decisions. By offering detailed insights, including tax planning capabilities, it helps you unlock new opportunities and create greater value for everyone involved.</p>
+                    <div class="modal-features">
+                        <span class="feature-tag-large">Portfolio View</span>
+                        <span class="feature-tag-large">Analytics</span>
+                        <span class="feature-tag-large">Tax Planning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Folio Advisor Modal -->
+    <div class="modal fade" id="folio-advisor-modal" tabindex="-1" aria-labelledby="folio-advisor-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="folio-advisor-modal-label">folio advisor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                                            <p class="modal-description">Our advisor solutions integrate effortlessly with Folio Guru to drive meaningful engagement, foster collaboration, and streamline essential administrative tasks helping you deliver exceptional value with ease.</p>
+                    <div class="modal-features">
+                        <span class="feature-tag-large">Collaboration</span>
+                        <span class="feature-tag-large">Engagement</span>
+                        <span class="feature-tag-large">Administration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Folio Enterprise Modal -->
+    <div class="modal fade" id="folio-enterprise-modal" tabindex="-1" aria-labelledby="folio-enterprise-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="folio-enterprise-modal-label">folio enterprise</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                                            <p class="modal-description">Folio enterprise gives you the freedom and flexibility to choose exactly the services you want to deploy for your clients, tailored to their unique needs and your business goals. Whether you're starting small or expanding your offerings, our platform grows with you enabling scalable solutions that adapt to changing market conditions and evolving client expectations. With its modular design, you can integrate the right tools at the right time, ensuring you deliver maximum value, maintain operational efficiency, and create a distinctive, competitive edge in today's fast-moving wealth management landscape.</p>
+                    <div class="modal-features">
+                        <span class="feature-tag-large">Customizable</span>
+                        <span class="feature-tag-large">Scalable</span>
+                        <span class="feature-tag-large">Enterprise</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Folio Trader Modal -->
+    <div class="modal fade" id="folio-trader-modal" tabindex="-1" aria-labelledby="folio-trader-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="folio-trader-modal-label">folio trader</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <p class="modal-description">Folio Trader gives you and your clients instant access to active markets, enabling you to view live market activity, buy securities, and settle trades in real time. Designed for speed, transparency, and efficiency, it empowers you to act quickly on market opportunities, streamline trade execution, and maintain full visibility over every transaction. Whether you're managing a single portfolio or multiple client accounts, Folio Trader ensures that your trading experience is seamless, secure, and fully integrated into your wealth management workflow.</p>
+                    <div class="modal-features">
+                        <span class="feature-tag-large">Real-time Trading</span>
+                        <span class="feature-tag-large">Market Data</span>
+                        <span class="feature-tag-large">Securities</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+</html> 
 </html> 
