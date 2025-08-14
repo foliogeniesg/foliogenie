@@ -60,18 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Register Form Validation
-    const registerForm = document.getElementById('registerForm');
-    if (registerForm) {
-        registerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (validateRegisterForm()) {
-                showSuccessMessage('Registration successful! Welcome to FolioGenie.');
-                registerForm.reset();
-            }
-        });
-    }
+
     
     // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('a[href^="#"]');
@@ -131,67 +120,7 @@ function validateLoginForm() {
 
 
 
-// Register Form Validation
-function validateRegisterForm() {
-    const requiredFields = [
-        'firstName', 'lastName', 'companyName', 'address', 'city', 
-        'state', 'zip', 'phone', 'brokerDealer', 'licenseNumber', 
-        'hearAbout', 'database', 'email', 'password', 'confirmPassword'
-    ];
-    
-    let isValid = true;
-    
-    // Clear previous error messages
-    clearErrorMessages();
-    
-    // Validate all required fields
-    requiredFields.forEach(fieldId => {
-        const field = document.getElementById(fieldId);
-        const value = field.value.trim();
-        
-        if (!value) {
-            showFieldError(fieldId, 'This field is required');
-            isValid = false;
-        }
-    });
-    
-    // Validate email
-    const email = document.getElementById('email').value.trim();
-    if (email && !isValidEmail(email)) {
-        showFieldError('email', 'Please enter a valid email address');
-        isValid = false;
-    }
-    
-    // Validate password
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    
-    if (password && password.length < 8) {
-        showFieldError('password', 'Password must be at least 8 characters');
-        isValid = false;
-    }
-    
-    if (password && confirmPassword && password !== confirmPassword) {
-        showFieldError('confirmPassword', 'Passwords do not match');
-        isValid = false;
-    }
-    
-    // Validate phone number
-    const phone = document.getElementById('phone').value.trim();
-    if (phone && !isValidPhone(phone)) {
-        showFieldError('phone', 'Please enter a valid phone number');
-        isValid = false;
-    }
-    
-    // Validate zip code
-    const zip = document.getElementById('zip').value.trim();
-    if (zip && !isValidZip(zip)) {
-        showFieldError('zip', 'Please enter a valid zip code');
-        isValid = false;
-    }
-    
-    return isValid;
-}
+
 
 // Helper Functions
 function isValidEmail(email) {
@@ -287,7 +216,25 @@ function animateOnScroll() {
 }
 
 // Initialize animations when page loads
-window.addEventListener('load', animateOnScroll); 
+window.addEventListener('load', animateOnScroll);
+
+// Solution Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all Explore buttons
+    const learnMoreBtns = document.querySelectorAll('.learn-more-btn');
+    
+    // Add click event listener to each button
+    learnMoreBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const solutionType = this.getAttribute('data-solution');
+            const modalId = `#${solutionType}-modal`;
+            
+            // Show the corresponding modal
+            const modal = new bootstrap.Modal(document.querySelector(modalId));
+            modal.show();
+        });
+    });
+}); 
 
 // Smart URL routing and redirect logic
 function handleSmartRouting() {
@@ -301,9 +248,6 @@ function handleSmartRouting() {
         const smartRoutes = {
             '/login1': 'index.html',           // login1 -> homepage
             '/login': 'index.html',             // login -> homepage  
-            '/sign-up': 'register.html',        // sign-up -> register page
-            '/signup': 'register.html',         // signup -> register page
-            '/register': 'register.html',       // register -> register page
             '/custody': 'index.html',           // custody -> homepage
             '/dashboard': 'index.html',         // dashboard -> homepage
             '/admin': 'index.html',             // admin -> homepage
