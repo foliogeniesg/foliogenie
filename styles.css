@@ -609,33 +609,42 @@ body {
     .hero-title {
         font-size: 1.3rem;
         margin-bottom: 1.25rem;
-        padding-top: 1.5rem;
+        padding-top: 3rem;
+        padding-left: 30px !important;
+        margin-left: 0;
     }
     
     .hero-text {
         font-size: 0.95rem;
         line-height: 1.6;
+        padding-left: 30px !important;
+        margin-left: 0;
     }
     
     .get-connected-btn {
         padding: 0.625rem 1.25rem !important;
         font-size: 0.9rem !important;
+        margin-left: 30px !important;
     }
     
     .hero-section .col-lg-6:first-child {
         margin-bottom: 2rem;
+        padding-right: 15px;
+        padding-left: 0 !important;
     }
     
     .hero-content {
         margin-top: 0.5rem;
+        padding-left: 0 !important;
+        padding-top: 0;
     }
     
     .hero-section .row {
-        align-items: flex-start;
+        align-items: center;
     }
     
     .hero-section .col-lg-6 {
-        padding: 0 15px;
+        padding: 0 !important;
     }
 }
 
