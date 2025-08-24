@@ -619,24 +619,40 @@ body {
         line-height: 1.6;
         padding-left: 30px !important;
         margin-left: 0;
+        margin-top: 0 !important;
+        margin-bottom: 0.25rem !important;
     }
     
     .get-connected-btn {
         padding: 0.625rem 1.25rem !important;
         font-size: 0.9rem !important;
         margin-left: 30px !important;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
     }
     
     .hero-section .col-lg-6:first-child {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         padding-right: 15px;
         padding-left: 0 !important;
     }
     
     .hero-content {
-        margin-top: 0.5rem;
+        margin-top: 0 !important;
         padding-left: 0 !important;
-        padding-top: 0;
+        padding-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Force override of any spacing issues */
+    .hero-section .col-lg-6:last-child .hero-content {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    .hero-section .col-lg-6:last-child .hero-content .hero-text:first-child {
+        margin-top: 0 !important;
+        margin-bottom: 0.25rem !important;
     }
     
     .hero-section .row {
